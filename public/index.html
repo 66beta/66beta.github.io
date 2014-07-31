@@ -79,6 +79,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <span class="article-date">
+  <time datetime="2014-07-31T06:59:11.000Z" itemprop="datePublished">2014-07-31</time>
+</span>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/">开发WordPress插件的时候，用date函数无法获取所在时区的时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在普通PHP开发中，假定在php.ini中已经设定了timezone为<code>Asia/Shanghai</code>之后，用<code>date(&#39;H:i:s&#39;)</code>即可获得当前时间。<br>但是刚刚在研究开发WordPress插件的时候，发现用<code>date(&#39;H:i:s&#39;)</code>获取的时间是0时区，php.ini中的设置没有起作用，
+        
+          <p class="article-more-link">
+            <a href="/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/" data-id="ny6p2hggw5s1brwx" class="article-share-link">Share</a>
+      
+        <a href="http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ci-session-issue-with-xampp-on-osx" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <span class="article-date">
@@ -280,58 +329,6 @@
 
 
   
-    <article id="post-how-to-setup-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <span class="article-date">
-  <time datetime="2014-05-06T08:29:59.000Z" itemprop="datePublished">2014-05-06</time>
-</span>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/06/how-to-setup-hexo/">如何安装配置Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> - 是一个基于Nodejs开发的静态blog系统，类似于基于Ruby的Jekyll。由一个台湾同胞<a href="http://zespia.tw/" target="_blank" rel="external">tommy351</a>开发的。在<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">Github</a>上搜索”node.js blog”的话，当前是Most stars的。</p>
-<p><strong>Hexo的安装也非常便捷(Git等常用工具就不多说了～)：</strong></p>
-<h2 id="搭建环境">搭建环境</h2>
-<p>
-        
-          <p class="article-more-link">
-            <a href="/2014/05/06/how-to-setup-hexo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66beta.com/2014/05/06/how-to-setup-hexo/" data-id="thjy3vhbs66jx4mx" class="article-share-link">Share</a>
-      
-        <a href="http://66beta.com/2014/05/06/how-to-setup-hexo/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -345,7 +342,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/buzz/">buzz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/buzz/">buzz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -354,7 +351,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Codeigniter/" style="font-size: 10.00px;">Codeigniter</a><a href="/tags/buzz/" style="font-size: 10.00px;">buzz</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/jQuery-Mobile/" style="font-size: 10.00px;">jQuery Mobile</a><a href="/tags/js/" style="font-size: 10.00px;">js</a><a href="/tags/nodejs/" style="font-size: 10.00px;">nodejs</a>
+      <a href="/tags/Codeigniter/" style="font-size: 10.00px;">Codeigniter</a><a href="/tags/buzz/" style="font-size: 10.00px;">buzz</a><a href="/tags/css/" style="font-size: 10.00px;">css</a><a href="/tags/hexo/" style="font-size: 20.00px;">hexo</a><a href="/tags/jQuery-Mobile/" style="font-size: 10.00px;">jQuery Mobile</a><a href="/tags/js/" style="font-size: 10.00px;">js</a><a href="/tags/nodejs/" style="font-size: 10.00px;">nodejs</a><a href="/tags/php/" style="font-size: 10.00px;">php</a><a href="/tags/wordpress/" style="font-size: 10.00px;">wordpress</a>
     </div>
   </div>
 

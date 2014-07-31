@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014/7 | 66beta&#39;s Blog</title>
+  <title>开发WordPress插件的时候，用date函数无法获取所在时区的时间 | 66beta&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="66beta's blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="66beta's Blog">
-<meta property="og:url" content="http://66beta.com/archives/2014/07/">
+  <meta name="description" content="在普通PHP开发中，假定在php.ini中已经设定了timezone为Asia/Shanghai之后，用date(&#39;H:i:s&#39;)即可获得当前时间。但是刚刚在研究开发WordPress插件的时候，发现用date(&#39;H:i:s&#39;)获取的时间是0时区，php.ini中的设置没有起作用，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发WordPress插件的时候，用date函数无法获取所在时区的时间">
+<meta property="og:url" content="http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/">
 <meta property="og:site_name" content="66beta's Blog">
-<meta property="og:description" content="66beta's blog">
+<meta property="og:description" content="在普通PHP开发中，假定在php.ini中已经设定了timezone为Asia/Shanghai之后，用date(&#39;H:i:s&#39;)即可获得当前时间。但是刚刚在研究开发WordPress插件的时候，发现用date(&#39;H:i:s&#39;)获取的时间是0时区，php.ini中的设置没有起作用，">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="66beta's Blog">
-<meta name="twitter:description" content="66beta's blog">
+<meta name="twitter:title" content="开发WordPress插件的时候，用date函数无法获取所在时区的时间">
+<meta name="twitter:description" content="在普通PHP开发中，假定在php.ini中已经设定了timezone为Asia/Shanghai之后，用date(&#39;H:i:s&#39;)即可获得当前时间。但是刚刚在研究开发WordPress插件的时候，发现用date(&#39;H:i:s&#39;)获取的时间是0时区，php.ini中的设置没有起作用，">
 
   
     <link rel="alternative" href="/atom.xml" title="66beta&#39;s Blog" type="application/atom+xml">
@@ -77,9 +77,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <span class="article-date">
   <time datetime="2014-07-31T06:59:11.000Z" itemprop="datePublished">2014-07-31</time>
@@ -96,8 +94,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/">开发WordPress插件的时候，用date函数无法获取所在时区的时间</a>
+    <h1 class="article-title" itemprop="name">
+      开发WordPress插件的时候，用date函数无法获取所在时区的时间
     </h1>
   
 
@@ -105,12 +103,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在普通PHP开发中，假定在php.ini中已经设定了timezone为<code>Asia/Shanghai</code>之后，用<code>date(&#39;H:i:s&#39;)</code>即可获得当前时间。<br>但是刚刚在研究开发WordPress插件的时候，发现用<code>date(&#39;H:i:s&#39;)</code>获取的时间是0时区，php.ini中的设置没有起作用，
-        
-          <p class="article-more-link">
-            <a href="/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/#more">Read More</a>
-          </p>
-        
+        <p>在普通PHP开发中，假定在php.ini中已经设定了timezone为<code>Asia/Shanghai</code>之后，用<code>date(&#39;H:i:s&#39;)</code>即可获得当前时间。<br>但是刚刚在研究开发WordPress插件的时候，发现用<code>date(&#39;H:i:s&#39;)</code>获取的时间是0时区，php.ini中的设置没有起作用，<a id="more"></a>WordPress后台设置的时区也不在此起作用。<br>Google了许久也没有找到问题，还去stackoverflow上开了“处女“问。只能暂时搁置了。</p>
+<h2 id="找到答案">找到答案</h2>
+<p>吃完午饭又开始折腾，突然脑洞大开，会不会是搜索关键词不好？于是又换了几个关键词Google了下，果然找到了答案：在WP中，需要用其自己的函数<code>current_time(&quot;H:i:s&quot;)</code>才能获取到本时区时间，用<code>date(&#39;H:i:s&#39;)</code>只能得到0时区的时间。<br>文档在这里：<a href="http://codex.wordpress.org/Function_Reference/current_time" target="_blank" rel="external">Function Reference:current_time</a></p>
+
       
     </div>
     <footer class="article-footer">
@@ -124,60 +120,26 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-ci-session-issue-with-xampp-on-osx" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <span class="article-date">
-  <time datetime="2014-07-21T05:28:21.000Z" itemprop="datePublished">2014-07-21</time>
-</span>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PHP/">PHP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/21/ci-session-issue-with-xampp-on-osx/">CI Session regenerate Issue with xampp on OSX</a>
-    </h1>
+    <a href="/2014/07/21/ci-session-issue-with-xampp-on-osx/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CI Session regenerate Issue with xampp on OSX</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近赶一个项目，前后端都包了，还久没写PHP了，再一次扮演全栈码农。由于项目冲突了，时间很急，所以加班到半夜，回去还继续写。由于家里是macbook，平时有用xampp，但是一直都没有涉及到Session，所以都没有碰到此问题。Session的设置参考的官网文档的，存在db中。
-        
-          <p class="article-more-link">
-            <a href="/2014/07/21/ci-session-issue-with-xampp-on-osx/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://66beta.com/2014/07/21/ci-session-issue-with-xampp-on-osx/" data-id="gpzajaujwucig24x" class="article-share-link">Share</a>
-      
-        <a href="http://66beta.com/2014/07/21/ci-session-issue-with-xampp-on-osx/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Codeigniter/">Codeigniter</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-  
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -231,11 +193,13 @@
 <script>
   var disqus_shortname = '66beta';
   
+  var disqus_url = 'http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/count.js';
+    dsq.src = '//go.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
