@@ -3,24 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Chrome中启用第三方扩展 | 66beta&#39;s Blog</title>
+  <title>Archives: 2014/12 | 66beta&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Chrome中启用第三方扩展">
-<meta property="og:url" content="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/">
+  <meta name="description" content="66beta's blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="66beta's Blog">
+<meta property="og:url" content="http://66beta.com/archives/2014/12/">
 <meta property="og:site_name" content="66beta's Blog">
-<meta property="og:description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
-<meta property="og:image" content="/public/tampermonkey.png">
+<meta property="og:description" content="66beta's blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chrome中启用第三方扩展">
-<meta name="twitter:description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
+<meta name="twitter:title" content="66beta's Blog">
+<meta name="twitter:description" content="66beta's blog">
 
   
     <link rel="alternative" href="/atom.xml" title="66beta&#39;s Blog" type="application/atom+xml">
@@ -84,10 +77,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-enable-third-party-extensions-on-chrome" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Initial-Setup-For-a-VPS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <span class="article-date">
-  <time datetime="2014-06-10T09:52:12.000Z" itemprop="datePublished">2014-06-10</time>
+  <time datetime="2014-12-11T08:55:45.000Z" itemprop="datePublished">2014-12-11</time>
 </span>
     
   <div class="article-category">
@@ -101,8 +96,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Chrome中启用第三方扩展
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/11/Initial-Setup-For-a-VPS/">Initial Setup For a VPS</a>
     </h1>
   
 
@@ -110,56 +105,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。<br>乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。<br>但是类似<strong>Youtube Center</strong>之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？</p>
-<h2 id="“Challenge_except”">“Challenge except”</h2>
-<p>感谢的userscripts.org社区，催生了<a id="more"></a><strong><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="external">Tampermonkey</a></strong>这样一款伟大的插件，关键居然还通过了Chrome应用商店的审核！</p>
-<h2 id="进入主题">进入主题</h2>
-<p>到Chrome应用商店安装<strong>Tampermonkey</strong>，默认配置情况下Tampermonkey会自动嗅探插件脚本，比如Youtube Center在Github上的地址是<code>https://github.com/YePpHa/YouTubeCenter/raw/master/dist/YouTubeCenter.user.js</code>，来到这个页面后，Tampermonkey会提示自动添加这个脚本。当然也可以手动添加。<br>于是，被Chrome禁用的扩展，又复活了。<br><img src="/public/tampermonkey.png" alt="Install Youtube Center on Tampermonkey"></p>
-<h2 id="担心">担心</h2>
-<p>万一哪天Google看Tampermonkey不爽，把它下架了，那就悲剧了～</p>
-
+        <p>最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/11/Initial-Setup-For-a-VPS/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/" data-id="tn9k1pjm0u1lcjgi" class="article-share-link">Share</a>
+      <a data-url="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/" data-id="u7ajozqgerj0uxm3" class="article-share-link">Share</a>
       
-        <a href="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/buzz/">buzz</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/06/24/jquery-mobile-full-page-reload/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          jQuery Mobile页面刷新JS失效问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/05/15/css-tips-and-tricks/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CSS小技巧/贴士</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+  
+  
 </section>
         
           <aside id="sidebar">
@@ -213,13 +182,11 @@
 <script>
   var disqus_shortname = '66beta';
   
-  var disqus_url = 'http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/embed.js';
+    dsq.src = '//go.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

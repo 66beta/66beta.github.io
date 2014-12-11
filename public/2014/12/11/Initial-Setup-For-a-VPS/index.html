@@ -3,24 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Chrome中启用第三方扩展 | 66beta&#39;s Blog</title>
+  <title>Initial Setup For a VPS | 66beta&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
+  <meta name="description" content="最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chrome中启用第三方扩展">
-<meta property="og:url" content="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/">
+<meta property="og:title" content="Initial Setup For a VPS">
+<meta property="og:url" content="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/">
 <meta property="og:site_name" content="66beta's Blog">
-<meta property="og:description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
-<meta property="og:image" content="/public/tampermonkey.png">
+<meta property="og:description" content="最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chrome中启用第三方扩展">
-<meta name="twitter:description" content="Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。但是类似Youtube Center之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？
-“Challenge except”
-感谢的userscripts">
+<meta name="twitter:title" content="Initial Setup For a VPS">
+<meta name="twitter:description" content="最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。">
 
   
     <link rel="alternative" href="/atom.xml" title="66beta&#39;s Blog" type="application/atom+xml">
@@ -84,10 +77,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-enable-third-party-extensions-on-chrome" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Initial-Setup-For-a-VPS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <span class="article-date">
-  <time datetime="2014-06-10T09:52:12.000Z" itemprop="datePublished">2014-06-10</time>
+  <time datetime="2014-12-11T08:55:45.000Z" itemprop="datePublished">2014-12-11</time>
 </span>
     
   <div class="article-category">
@@ -102,7 +95,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Chrome中启用第三方扩展
+      Initial Setup For a VPS
     </h1>
   
 
@@ -110,23 +103,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。<br>乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。<br>但是类似<strong>Youtube Center</strong>之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？</p>
-<h2 id="“Challenge_except”">“Challenge except”</h2>
-<p>感谢的userscripts.org社区，催生了<a id="more"></a><strong><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="external">Tampermonkey</a></strong>这样一款伟大的插件，关键居然还通过了Chrome应用商店的审核！</p>
-<h2 id="进入主题">进入主题</h2>
-<p>到Chrome应用商店安装<strong>Tampermonkey</strong>，默认配置情况下Tampermonkey会自动嗅探插件脚本，比如Youtube Center在Github上的地址是<code>https://github.com/YePpHa/YouTubeCenter/raw/master/dist/YouTubeCenter.user.js</code>，来到这个页面后，Tampermonkey会提示自动添加这个脚本。当然也可以手动添加。<br>于是，被Chrome禁用的扩展，又复活了。<br><img src="/public/tampermonkey.png" alt="Install Youtube Center on Tampermonkey"></p>
-<h2 id="担心">担心</h2>
-<p>万一哪天Google看Tampermonkey不爽，把它下架了，那就悲剧了～</p>
+        <p>最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。<br><a id="more"></a></p>
+<h2 id="换OS为Ubuntu">换OS为Ubuntu</h2>
+<p>对，有些服务器商默认会给你一个CentOS，对我这种初级用户来说用啥都差不多，用Ubuntu纯碎是情怀。</p>
+<h2 id="更改root密码">更改root密码</h2>
+<p>默认密码太难记，换成自己的比较方便，然后就SSH走起。<br><code>sudo passwd root</code></p>
+<h2 id="更新软件源">更新软件源</h2>
+<p>不是所有的服务器商都会保证一个up-to-date的镜像的，搬瓦工就是！<br><code>sudo apt-get update</code></p>
+<h2 id="安装Shadowsocks">安装Shadowsocks</h2>
+<p><a href="https://github.com/clowwindy/shadowsocks" target="_blank" rel="external">Shadowsocks on Github</a><br>Across the Great Firewall, we can reach every corner in the world.<br>祝病魔早日战胜方校长。</p>
+<h2 id="安装LAMP，开启必备组件">安装LAMP，开启必备组件</h2>
+<p>某些服务商会在新建的时候提供组件选择，比如DigitalOcean。没有的话，就要自己安装了：<br><code>sudo apt-get install lamp-server^</code><br>以上默认不开mod_rewrite，要自己开启：<br><code>sudo a2enmod rewrite</code><br>另外还要安装下Mcrypt，比如要连接微信公众平台就是需要此组件：<br><code>sudo apt-get install php5-mcrypt</code><br>重启apache生效：<br><code>sudo service apache2 restart</code></p>
+<h2 id="设置apache虚拟主机">设置apache虚拟主机</h2>
+<p>1、复制一个站点配置文件<br><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf</code><br>2、编辑新站点配置文件<br><code>sudo vi /etc/apache2/sites-available/example.com.conf</code><br>修改配置信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;VirtualHost *:80&gt;</span></div><div class="line">    <span class="keyword">ServerAdmin</span> webmaster@localhost</div><div class="line">    <span class="keyword"><span class="common">ServerName</span></span> example.com</div><div class="line">    <span class="keyword">ServerAlias</span> www.example.com</div><div class="line">    <span class="keyword"><span class="common">DocumentRoot</span></span> /var/www/html/example</div><div class="line">    <span class="keyword">ErrorLog</span> <span class="cbracket">${APACHE_LOG_DIR}</span>/error.log</div><div class="line">    <span class="keyword">CustomLog</span> <span class="cbracket">${APACHE_LOG_DIR}</span>/access.log combined</div><div class="line"><span class="tag">&lt;/VirtualHost&gt;</span></div></pre></td></tr></table></figure>
+
+<p>启用新站点：<br><code>sudo a2ensite example.com.conf</code><br>重启apache生效：<br><code>sudo service apache2 restart</code></p>
+<h2 id="屏蔽根目录">屏蔽根目录</h2>
+<p>有时候只是放了个二级域名而已，根目录不喜欢被访问，只想放条信息，修改000-default.conf：<br><code>sudo vi /etc/apache2/sites-available/000-default.conf</code><br>添加一行：<br><code>ServerName 服务器IP地址</code></p>
+<p>配置完毕，够用就行。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/" data-id="tn9k1pjm0u1lcjgi" class="article-share-link">Share</a>
+      <a data-url="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/" data-id="u7ajozqgerj0uxm3" class="article-share-link">Share</a>
       
-        <a href="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/buzz/">buzz</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -134,19 +139,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/06/24/jquery-mobile-full-page-reload/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          jQuery Mobile页面刷新JS失效问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/05/15/css-tips-and-tricks/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/08/11/delete-a-chinese-foler-from-linux-command-line/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CSS小技巧/贴士</div>
+      <div class="article-nav-title">如何在Linux终端中删除中文文件夹</div>
     </a>
   
 </nav>
@@ -213,7 +209,7 @@
 <script>
   var disqus_shortname = '66beta';
   
-  var disqus_url = 'http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/';
+  var disqus_url = 'http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/';
   
   (function(){
     var dsq = document.createElement('script');

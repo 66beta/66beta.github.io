@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[66beta's Blog]]></title>
+  <subtitle><![CDATA[66 rabbits lying on the ground, even on the cloudy day!]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://66beta.com/"/>
+  <updated>2014-12-11T09:31:03.646Z</updated>
+  <id>http://66beta.com/</id>
+  
+  <author>
+    <name><![CDATA[66beta]]></name>
+    <email><![CDATA[orion6sky@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Initial Setup For a VPS]]></title>
+    <link href="http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/"/>
+    <id>http://66beta.com/2014/12/11/Initial-Setup-For-a-VPS/</id>
+    <published>2014-12-11T08:55:45.000Z</published>
+    <updated>2014-12-11T09:30:48.000Z</updated>
+    <content type="html"><![CDATA[<p>最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。<br><a id="more"></a></p>
+<h2 id="换OS为Ubuntu">换OS为Ubuntu</h2>
+<p>对，有些服务器商默认会给你一个CentOS，对我这种初级用户来说用啥都差不多，用Ubuntu纯碎是情怀。</p>
+<h2 id="更改root密码">更改root密码</h2>
+<p>默认密码太难记，换成自己的比较方便，然后就SSH走起。<br><code>sudo passwd root</code></p>
+<h2 id="更新软件源">更新软件源</h2>
+<p>不是所有的服务器商都会保证一个up-to-date的镜像的，搬瓦工就是！<br><code>sudo apt-get update</code></p>
+<h2 id="安装Shadowsocks">安装Shadowsocks</h2>
+<p><a href="https://github.com/clowwindy/shadowsocks" target="_blank" rel="external">Shadowsocks on Github</a><br>Across the Great Firewall, we can reach every corner in the world.<br>祝病魔早日战胜方校长。</p>
+<h2 id="安装LAMP，开启必备组件">安装LAMP，开启必备组件</h2>
+<p>某些服务商会在新建的时候提供组件选择，比如DigitalOcean。没有的话，就要自己安装了：<br><code>sudo apt-get install lamp-server^</code><br>以上默认不开mod_rewrite，要自己开启：<br><code>sudo a2enmod rewrite</code><br>另外还要安装下Mcrypt，比如要连接微信公众平台就是需要此组件：<br><code>sudo apt-get install php5-mcrypt</code><br>重启apache生效：<br><code>sudo service apache2 restart</code></p>
+<h2 id="设置apache虚拟主机">设置apache虚拟主机</h2>
+<p>1、复制一个站点配置文件<br><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf</code><br>2、编辑新站点配置文件<br><code>sudo vi /etc/apache2/sites-available/example.com.conf</code><br>修改配置信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;VirtualHost *:80&gt;</span></div><div class="line">    <span class="keyword">ServerAdmin</span> webmaster@localhost</div><div class="line">    <span class="keyword"><span class="common">ServerName</span></span> example.com</div><div class="line">    <span class="keyword">ServerAlias</span> www.example.com</div><div class="line">    <span class="keyword"><span class="common">DocumentRoot</span></span> /var/www/html/example</div><div class="line">    <span class="keyword">ErrorLog</span> <span class="cbracket">${APACHE_LOG_DIR}</span>/error.log</div><div class="line">    <span class="keyword">CustomLog</span> <span class="cbracket">${APACHE_LOG_DIR}</span>/access.log combined</div><div class="line"><span class="tag">&lt;/VirtualHost&gt;</span></div></pre></td></tr></table></figure>
+
+<p>启用新站点：<br><code>sudo a2ensite example.com.conf</code><br>重启apache生效：<br><code>sudo service apache2 restart</code></p>
+<h2 id="屏蔽根目录">屏蔽根目录</h2>
+<p>有时候只是放了个二级域名而已，根目录不喜欢被访问，只想放条信息，修改000-default.conf：<br><code>sudo vi /etc/apache2/sites-available/000-default.conf</code><br>添加一行：<br><code>ServerName 服务器IP地址</code></p>
+<p>配置完毕，够用就行。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近电信网络半瘫，一直在寻觅网速过得去的VPS。之前的DigitalOcean无论哪个节点都卡成翔了，刚换搬瓦工，一次性买了一年。好久不弄，基本的设置都忘了，有些一时没想到，有些忘记了还要问Google。记录下来，以防下回再“搬家”。<br>]]>
+    
+    </summary>
+    
+      <category term="linux" scheme="http://66beta.com/tags/linux/"/>
+    
+      <category term="buzz" scheme="http://66beta.com/categories/buzz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何在Linux终端中删除中文文件夹]]></title>
+    <link href="http://66beta.com/2014/08/11/delete-a-chinese-foler-from-linux-command-line/"/>
+    <id>http://66beta.com/2014/08/11/delete-a-chinese-foler-from-linux-command-line/</id>
+    <published>2014-08-11T07:42:02.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>为了方便，在Windows下直接复制了一个文件夹，系统默认为“ABC - 副本”。没太在意，给就丢到Linux服务器上去了。结果在终端里，连名字都是显示不了，更不要说用rm删除了。<a id="more"></a><br>后来Google了下，找到了解决办法，记录下，有备无患～</p>
+<ol>
+<li>列出当前目录下文件(夹)的节点号。<br><code>ls -i</code></li>
+<li>看到要删除的文件夹的节点号，比如123456，利用节点号删除<br><code>find ./ -inum 123456 -print -exec rm {} -rf \;</code></li>
+</ol>
+<p>其实不只是中文文件夹，乱码的也是同理。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>为了方便，在Windows下直接复制了一个文件夹，系统默认为“ABC - 副本”。没太在意，给就丢到Linux服务器上去了。结果在终端里，连名字都是显示不了，更不要说用rm删除了。]]>
+    
+    </summary>
+    
+      <category term="linux" scheme="http://66beta.com/tags/linux/"/>
+    
+      <category term="buzz" scheme="http://66beta.com/categories/buzz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何在Github上删除commit]]></title>
+    <link href="http://66beta.com/2014/08/11/delete-commits-from-github/"/>
+    <id>http://66beta.com/2014/08/11/delete-commits-from-github/</id>
+    <published>2014-08-11T07:30:08.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>自己写项目，放在Github上，在PC和MAC间同步，可是在MAC上同步一不小心就会出问题，这个应该是Github的MAC客户端有问题。昨天就不小心给同步坏了，本来就感冒了，身心一下了疲惫了。试过Revert到之前一个commit，但是删掉的依然没有找回。<a id="more"></a><br>想来也只能删掉这两个commit（原commit及其Revert）了。正好记录下，下次可能还用得上。</p>
+<h2 id="在git/Github中删除commit的命令">在git/Github中删除commit的命令</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard &lt;commit_id&gt;</span></span></div><div class="line">git push origin HEAD <span class="comment">--force</span></div></pre></td></tr></table></figure>
+
+<p><strong>git reset –hard</strong> 彻底回退到某个版本<br><strong><commit_id></commit_id></strong> 长长的SHA1值<br><strong>HEAD</strong> 最近一个提交<br>需要在命令行中执行，Github客户端没有这个功能。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>自己写项目，放在Github上，在PC和MAC间同步，可是在MAC上同步一不小心就会出问题，这个应该是Github的MAC客户端有问题。昨天就不小心给同步坏了，本来就感冒了，身心一下了疲惫了。试过Revert到之前一个commit，但是删掉的依然没有找回。]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://66beta.com/tags/git/"/>
+    
+      <category term="buzz" scheme="http://66beta.com/categories/buzz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[开发WordPress插件的时候，用date函数无法获取所在时区的时间]]></title>
+    <link href="http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/"/>
+    <id>http://66beta.com/2014/07/31/Use-current_time-function-instead-of-PHPs-time-function-in-WordPress-plugin-development/</id>
+    <published>2014-07-31T06:59:11.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>在普通PHP开发中，假定在php.ini中已经设定了timezone为<code>Asia/Shanghai</code>之后，用<code>date(&#39;H:i:s&#39;)</code>即可获得当前时间。<br>但是刚刚在研究开发WordPress插件的时候，发现用<code>date(&#39;H:i:s&#39;)</code>获取的时间是0时区，php.ini中的设置没有起作用，<a id="more"></a>WordPress后台设置的时区也不在此起作用。<br>Google了许久也没有找到问题，还去stackoverflow上开了“处女“问。只能暂时搁置了。</p>
+<h2 id="找到答案">找到答案</h2>
+<p>吃完午饭又开始折腾，突然脑洞大开，会不会是搜索关键词不好？于是又换了几个关键词Google了下，果然找到了答案：在WP中，需要用其自己的函数<code>current_time(&quot;H:i:s&quot;)</code>才能获取到本时区时间，用<code>date(&#39;H:i:s&#39;)</code>只能得到0时区的时间。<br>文档在这里：<a href="http://codex.wordpress.org/Function_Reference/current_time" target="_blank" rel="external">Function Reference:current_time</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在普通PHP开发中，假定在php.ini中已经设定了timezone为<code>Asia/Shanghai</code>之后，用<code>date(&#39;H:i:s&#39;)</code>即可获得当前时间。<br>但是刚刚在研究开发WordPress插件的时候，发现用<code>date(&#39;H:i:s&#39;)</code>获取的时间是0时区，php.ini中的设置没有起作用，]]>
+    
+    </summary>
+    
+      <category term="php" scheme="http://66beta.com/tags/php/"/>
+    
+      <category term="wordpress" scheme="http://66beta.com/tags/wordpress/"/>
+    
+      <category term="PHP" scheme="http://66beta.com/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[CI Session regenerate Issue with xampp on OSX]]></title>
+    <link href="http://66beta.com/2014/07/21/ci-session-issue-with-xampp-on-osx/"/>
+    <id>http://66beta.com/2014/07/21/ci-session-issue-with-xampp-on-osx/</id>
+    <published>2014-07-21T05:28:21.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>最近赶一个项目，前后端都包了，还久没写PHP了，再一次扮演全栈码农。由于项目冲突了，时间很急，所以加班到半夜，回去还继续写。由于家里是macbook，平时有用xampp，但是一直都没有涉及到Session，所以都没有碰到此问题。Session的设置参考的官网文档的，存在db中。<a id="more"></a><br>问题就是每次刷新页面，session就是会新生成一个，所以永远都拿不到之前一步保存的数据。<br>经过Google再Google之后，碰到一个有类似问题的老外，就照着改了下配置：<br><code>$config[&#39;sess_encrypt_cookie&#39;] = FALSE;</code><br>居然OK了～<br>也不知道是啥原理导致的，记得之前玩Laravel的时候没碰到过这个问题的。<br>记录下，有空回头看看到底是CI的bug，还是xampp的配置bug。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近赶一个项目，前后端都包了，还久没写PHP了，再一次扮演全栈码农。由于项目冲突了，时间很急，所以加班到半夜，回去还继续写。由于家里是macbook，平时有用xampp，但是一直都没有涉及到Session，所以都没有碰到此问题。Session的设置参考的官网文档的，存在db中。]]>
+    
+    </summary>
+    
+      <category term="Codeigniter" scheme="http://66beta.com/tags/Codeigniter/"/>
+    
+      <category term="PHP" scheme="http://66beta.com/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[jQuery Mobile页面刷新JS失效问题]]></title>
+    <link href="http://66beta.com/2014/06/24/jquery-mobile-full-page-reload/"/>
+    <id>http://66beta.com/2014/06/24/jquery-mobile-full-page-reload/</id>
+    <published>2014-06-24T08:35:42.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>用jQuery Mobile做了几个简单的演示页面，单个页面开发的时候都很顺利，最后汇总在一个测试的时候，发现切换页面的时候，CSS和JS会失效，一开始一直都以为是自己js代码哪里写错了，导致不能执行。<a id="more"></a></p>
+<p>翻来覆去得调试，都没有发现问题。最后回去看了下jQurey Mobile的文档，发现这是一项机制：<br><code>&quot;It&#39;s important to note that if you are linking from a mobile page that was loaded via Ajax to a page that contains multiple internal pages, you need to add a rel=&quot;external&quot; or data-ajax=&quot;false&quot; to the link. This tells the framework to do a full page reload to clear out the Ajax hash in the URL. This is critical because Ajax pages use the hash (#) to track the Ajax history, while multiple internal pages use the hash to indicate internal pages so there will be conflicts in the hash between these two modes.&quot;</code></p>
+<p>例如：<code>&lt;a href=&quot;multipage.html&quot; rel=&quot;external&quot;&gt;Multi-page link&lt;/a&gt;</code></p>
+<p>哎，看文档不仔细啊～</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>用jQuery Mobile做了几个简单的演示页面，单个页面开发的时候都很顺利，最后汇总在一个测试的时候，发现切换页面的时候，CSS和JS会失效，一开始一直都以为是自己js代码哪里写错了，导致不能执行。]]>
+    
+    </summary>
+    
+      <category term="jQuery Mobile" scheme="http://66beta.com/tags/jQuery-Mobile/"/>
+    
+      <category term="js" scheme="http://66beta.com/tags/js/"/>
+    
+      <category term="js" scheme="http://66beta.com/categories/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Chrome中启用第三方扩展]]></title>
+    <link href="http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/"/>
+    <id>http://66beta.com/2014/06/10/enable-third-party-extensions-on-chrome/</id>
+    <published>2014-06-10T09:52:12.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p>Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。<br>乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。<br>但是类似<strong>Youtube Center</strong>之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？</p>
+<h2 id="“Challenge_except”">“Challenge except”</h2>
+<p>感谢的userscripts.org社区，催生了<a id="more"></a><strong><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="external">Tampermonkey</a></strong>这样一款伟大的插件，关键居然还通过了Chrome应用商店的审核！</p>
+<h2 id="进入主题">进入主题</h2>
+<p>到Chrome应用商店安装<strong>Tampermonkey</strong>，默认配置情况下Tampermonkey会自动嗅探插件脚本，比如Youtube Center在Github上的地址是<code>https://github.com/YePpHa/YouTubeCenter/raw/master/dist/YouTubeCenter.user.js</code>，来到这个页面后，Tampermonkey会提示自动添加这个脚本。当然也可以手动添加。<br>于是，被Chrome禁用的扩展，又复活了。<br><img src="/public/tampermonkey.png" alt="Install Youtube Center on Tampermonkey"></p>
+<h2 id="担心">担心</h2>
+<p>万一哪天Google看Tampermonkey不爽，把它下架了，那就悲剧了～</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。<br>乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。<br>但是类似<strong>Youtube Center</strong>之类的插件是肯定没有机会进Chrome应用商店的，谁会把房子租给一个小偷，方便他来偷自家东西？</p>
+<h2 id="“Challenge_except”">“Challenge except”</h2>
+<p>感谢的userscripts.org社区，催生了]]>
+    
+    </summary>
+    
+      <category term="buzz" scheme="http://66beta.com/tags/buzz/"/>
+    
+      <category term="buzz" scheme="http://66beta.com/categories/buzz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[CSS小技巧/贴士]]></title>
+    <link href="http://66beta.com/2014/05/15/css-tips-and-tricks/"/>
+    <id>http://66beta.com/2014/05/15/css-tips-and-tricks/</id>
+    <published>2014-05-15T08:59:12.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="使用简写">使用简写</h2>
+<p>比如：<code>margin-top:5px;margin-bottom:5px;margin-left:0;margin-right:0;</code><br>可以简写为：<code>margin:5px 0;</code><br>其他还有很多可以简写的，比如font的定义，具体参考W3C文档。</p>
+<h2 id="为选中的文字定义样式">为选中的文字定义样式</h2>
+<p>比如：<code>::selection {color:#09c;}</code><br>适用于现代浏览器，有时需加厂商前缀，如：<code>::-moz-selection{}</code><br>这个功能在国外一些激进的网页设计博客上，2年前就开始使用了，<a id="more"></a>当然了人家环境好。</p>
+<h2 id="定义多个字体">定义多个字体</h2>
+<p>5年前，还流行着：<code>font-family:arial,&#39;宋体&#39;,sans-serif;</code>，网页上普遍都是‘宋体’<br>如今更多人选择：<code>font-family:arial,Microsoft YaHei&#39;,&#39;SimSun&#39;,sans-serif;</code><br>对于中文字体，先检测电脑上是否有微软雅黑，没有则采用后面一个宋体，这样可以添加多个与设计相近的字体，尽量保持网页在不同平台上字体的统一性。</p>
+<h2 id="过渡transition写在默认样式中">过渡transition写在默认样式中</h2>
+<p>假设要对<code>&lt;a&gt;</code>标签hover时改变文字颜色，并且添加trasition过渡效果，那么应当添加在：<code>a {color:#ccc;transition:color 0.5s ease-in-out;}</code>中<br>而不是这里：<code>a:hover {color:#096;}</code>，这样的话从hover切换回默认样式，也会有过渡效果～</p>
+<h2 id="文字在div中垂直居中">文字在div中垂直居中</h2>
+<p>有一个div：<code>&lt;div&gt;我要垂直居中！&lt;/div&gt;</code><br>对div定义<code>div {height:100px;display:table-cell;vertical-align:middle;}</code><br>原理是使div像td一样表现，这样就可以定义vertical-align了。</p>
+<h2 id="任意元素水平垂直居中">任意元素水平垂直居中</h2>
+<p>以图片为例：<code>&lt;div&gt;&lt;img src=&quot;sample.jpg&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;/div&gt;</code><br>div应当有个高度：<code>div {height:600px;position:relative;}</code><br>对图片进行绝对定位：<code>div img {position:absolute;top:50%;left:50%;}</code>，这时只是图片的左上角位于div的正中心，需要添加<code>div img {position:absolute;top:50%;left:50%;margin-top:-100px;margin-left:-100px;}</code><br>其中100px是取自图片的高宽度的一半，所以这个写法要求元素的高宽固定。</p>
+<h2 id="清除浮动">清除浮动</h2>
+<p>老生常谈，假设有：<code>&lt;div&gt;&lt;img src=&quot;a.jpg&quot;&gt;&lt;p&gt;text here&lt;/p&gt;&lt;/div&gt;</code>，其中<img>元素左浮动<br>那么需要为父容器<code>&lt;div&gt;</code>做清除浮动的设置，最最简洁的代码：<code>div:before,div:after{content:&quot;&quot;;display:table;} div:after{clear:both;}</code><br>原理就是通过设置:before和:after伪元素来清除浮动，有些版本还会加上行高、字号之类的，都是对此的增强。需要注意的是:before和:after在IE8及以上才支持。</p>
+<h2 id="用CSS做三角形">用CSS做三角形</h2>
+<p>这个东西最早有一个老外的博客上看到，现在找不到了，找到一个比较早的是<a href="http://css-tricks.com/snippets/css/css-triangle/" target="_blank" rel="external">CSS Tricks</a>上的一篇文章。<br>其实代码很简单：<code>&lt;div&gt;&lt;/div&gt;</code>，先设置样式：<code>div{height:0;width:0;margin-bottom:1em;}</code>，然后如果是向上的：<code>border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #09c;</code>，其他方向同理～<br>如果要等边三角形，那么以向上箭头为例，需要计算底边宽度（左边宽+右边宽*0.866=8.66）：<code>border-bottom:9px solid #09c;</code><br>当然了，也可以使用CSS3的transform来旋转角度，但是支持有限，且需要添加各产商前缀。</p>
+<h2 id="用box-shadow做纸张层叠效果">用box-shadow做纸张层叠效果</h2>
+<p><a href="http://jsfiddle.net/66beta/ad4HG/" target="_blank" rel="external">jsFiddle地址</a></p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/ad4HG/embedded/html,css,result/light" frameborder="0" allowfullscreen></iframe>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="使用简写">使用简写</h2>
+<p>比如：<code>margin-top:5px;margin-bottom:5px;margin-left:0;margin-right:0;</code><br>可以简写为：<code>margin:5px 0;</code><br>其他还有很多可以简写的，比如font的定义，具体参考W3C文档。</p>
+<h2 id="为选中的文字定义样式">为选中的文字定义样式</h2>
+<p>比如：<code>::selection {color:#09c;}</code><br>适用于现代浏览器，有时需加厂商前缀，如：<code>::-moz-selection{}</code><br>这个功能在国外一些激进的网页设计博客上，2年前就开始使用了，]]>
+    
+    </summary>
+    
+      <category term="css" scheme="http://66beta.com/tags/css/"/>
+    
+      <category term="css" scheme="http://66beta.com/categories/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何安装配置Hexo]]></title>
+    <link href="http://66beta.com/2014/05/06/how-to-setup-hexo/"/>
+    <id>http://66beta.com/2014/05/06/how-to-setup-hexo/</id>
+    <published>2014-05-06T08:29:59.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> - 是一个基于Nodejs开发的静态blog系统，类似于基于Ruby的Jekyll。由一个台湾同胞<a href="http://zespia.tw/" target="_blank" rel="external">tommy351</a>开发的。在<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">Github</a>上搜索”node.js blog”的话，当前是Most stars的。</p>
+<p><strong>Hexo的安装也非常便捷(Git等常用工具就不多说了～)：</strong></p>
+<h2 id="搭建环境">搭建环境</h2>
+<p><a id="more"></a></p>
+<ol>
+<li><p>安装nodejs，可以从<a href="http://nodejs.org/" target="_blank" rel="external">nodejs官网</a>下载到最新稳定版本。<br>OSX/Linux用户建议直接安装<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm (Node Version Manager)</a>，然后用nvm安装指定的nodejs版本；<br>Windows用户没有nvm但是有<a href="https://github.com/marcelklehr/nodist" target="_blank" rel="external">nodist (Natural node version manager for windows)</a>（记得添加bin目录到系统PATH中），然后跟nvm差不多的操作来安装nodejs。另外，Windows用户推荐在Powershell中操作。</p>
+</li>
+<li><p>采用taobao的npm镜像，安装cnpm<br>如同gem镜像一样，taobao也有个npm镜像叫做<a href="http://npm.taobao.org/" target="_blank" rel="external">TAONPM</a>，没10分钟同步一次，杠杠滴。<br>每次指定镜像源太麻烦了，所以有了cnpm：<br><code>npm install -g cnpm --registry=http://registry.npm.taobao.org</code><br>下次再想从taobao镜像安装的时候，直接<br><code>cnpm install -g *</code><br>很方便。</p>
+</li>
+</ol>
+<h2 id="安装并初始化Hexo">安装并初始化Hexo</h2>
+<ol>
+<li><p>安装Hexo<br>搭建好了nodejs环境，安装模块就很简单了：<br><code>npm install -g hexo</code></p>
+</li>
+<li><p>初始化<br>以我的Windows机器（POWERSHELL）为例：<br><code>PS C:\Users\66beta&gt; hexo init 66beta.github.io</code><br><strong>注意：这里就在C:\Users\66beta目录下运行init，不然会出错，具体不知道为什么，以后再研究</strong><br>来到C:\Users\66beta\66beta.github.io目录下，就可以看到Hexo的初始化的文件了。<br><a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="external">hexo-generator-feed</a>是一个hexo的插件，有了它才可以生成RSS，建议安装，在C:\Users\66beta\66beta.github.io目录下运行：<br><code>npm install hexo-generator-feed --save</code><br>然后，根据<a href="http://hexo.io/docs/configuration.html" target="_blank" rel="external">Hexo官方文档</a>来对_config.yml做一些配置。</p>
+</li>
+</ol>
+<h2 id="写文章并生成HTML">写文章并生成HTML</h2>
+<ol>
+<li><p>添加一篇文章<br><code>hexo new [layout] &lt;title&gt;</code><br>比如：<br><code>hexo new &quot;Hello Hexo&quot;</code><br>在source\_posts目录下就会有一个hello-hexo.md文件，用编辑器打开这个文件，编写markdown～</p>
+</li>
+<li><p>生成HTML<br>编写完后，运行生成HTML的命令：<br><code>hexo generate</code></p>
+</li>
+<li><p>预览<br>生成完HTML文件后，可以运行一个web服务来查看效果：<br><code>hexo server</code><br>保持开启状态，然后回去修改hello-hexo.md文件，刷新浏览器，修改即时呈现。</p>
+</li>
+</ol>
+<h2 id="完毕">完毕</h2>
+<p>以上只是记录下安装的流程，具体安装与使用请见<a href="http://hexo.io/" target="_blank" rel="external">Hexo官网</a>，下次有空研究下用traviCI和prose.io在线自动发布到Github看看。</p>
+<p>自从换掉了Jekyll用上了Hexo，妈妈再也不同担心我不写博客了，So easy～</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a> - 是一个基于Nodejs开发的静态blog系统，类似于基于Ruby的Jekyll。由一个台湾同胞<a href="http://zespia.tw/" target="_blank" rel="external">tommy351</a>开发的。在<a href="https://github.com/tommy351/hexo" target="_blank" rel="external">Github</a>上搜索”node.js blog”的话，当前是Most stars的。</p>
+<p><strong>Hexo的安装也非常便捷(Git等常用工具就不多说了～)：</strong></p>
+<h2 id="搭建环境">搭建环境</h2>
+<p>]]>
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://66beta.com/tags/hexo/"/>
+    
+      <category term="nodejs" scheme="http://66beta.com/categories/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://66beta.com/2014/05/04/hello-world/"/>
+    <id>http://66beta.com/2014/05/04/hello-world/</id>
+    <published>2014-05-04T14:11:06.000Z</published>
+    <updated>2014-12-11T08:45:29.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Octopress不成，Hexo之">Octopress不成，Hexo之</h2>
+<p>Ruby在Windows上面实在悲剧，无法直视啊，咱也不懂Ruby，近阶段也不想懂。<br>那个Nodejs在襁褓中的年代，Jekyll横行；现如今已是Nodejs的天下啦～<br>Hexo - 来自台湾同胞的作品，Github上star最多的基于Nodejs的blog系统，功能、插件、主题相对都比较丰富。<br><a id="more"></a><br>毕竟是js啊，改起来瞬间就顺手了…</p>
+<h2 id="好好码字">好好码字</h2>
+<p>自从用了Jekyll，半年都憋不出一篇，一是懒，二是确实没时间，少壮不努力～老大徒伤悲，一言难尽啊！<br>都说用静态blog是作(no zuo no die)，但其实Wordpress之类的反而背离了码字本来的意义吧～</p>
+<p><strong>现在开始好好码字，积累亦分享。</strong></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Octopress不成，Hexo之">Octopress不成，Hexo之</h2>
+<p>Ruby在Windows上面实在悲剧，无法直视啊，咱也不懂Ruby，近阶段也不想懂。<br>那个Nodejs在襁褓中的年代，Jekyll横行；现如今已是Nodejs的天下啦～<br>Hexo - 来自台湾同胞的作品，Github上star最多的基于Nodejs的blog系统，功能、插件、主题相对都比较丰富。<br>]]>
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://66beta.com/tags/hexo/"/>
+    
+      <category term="nodejs" scheme="http://66beta.com/tags/nodejs/"/>
+    
+      <category term="buzz" scheme="http://66beta.com/categories/buzz/"/>
+    
+  </entry>
+  
+</feed>
