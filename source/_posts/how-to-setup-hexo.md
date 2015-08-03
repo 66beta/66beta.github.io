@@ -1,6 +1,6 @@
 title: '如何安装配置Hexo'
 date: 2014-05-06 16:29:59
-tags: 
+tags:
 - hexo
 categories:
 - nodejs
@@ -57,6 +57,3 @@ Windows用户没有nvm但是有[nodist (Natural node version manager for windows
 以上只是记录下安装的流程，具体安装与使用请见[Hexo官网](http://hexo.io/)，下次有空研究下用traviCI和prose.io在线自动发布到Github看看。
 
 自从换掉了Jekyll用上了Hexo，妈妈再也不同担心我不写博客了，So easy～
-
-
-
