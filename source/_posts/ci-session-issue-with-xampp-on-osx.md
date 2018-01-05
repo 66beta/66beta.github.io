@@ -1,3 +1,4 @@
+---
 title: 'CI Session regenerate Issue with xampp on OSX'
 date: 2014-07-21 13:28:21
 tags:

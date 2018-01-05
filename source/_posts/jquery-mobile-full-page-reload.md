@@ -1,3 +1,4 @@
+---
 title: 'jQuery Mobile页面刷新JS失效问题'
 date: 2014-06-24 16:35:42
 tags:

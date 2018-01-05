@@ -1,18 +1,18 @@
 # Hexo Configuration
-## Docs: http://hexo.io/docs/configuration.html
+## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
 title: 66beta's Blog
-subtitle: 66 rabbits lying on the ground, even on the cloudy day!
-description: 66beta's blog
+subtitle:
+description: 66 rabbits lying on the ground, even on the cloudy day!
 author: 66beta
-language: zh-cn
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://66beta.com
+url: http://blog.66beta.com
 root: /
 permalink: :title/
 permalink_defaults:
@@ -40,8 +40,17 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: true
+  auto_detect: false
   tab_replace:
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
 
 # Category & Tag
 default_category: buzz
@@ -61,17 +70,16 @@ per_page: 5
 pagination_dir: page
 
 # Extensions
-## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
-theme: landscape
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
 
 # Deployment
-## Docs: http://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: https://github.com/66beta/66beta.github.io.git
   branch: master
-  message:
 
 # Archive
 ## https://github.com/hexojs/hexo-generator-archive
@@ -79,13 +87,6 @@ archive_generator:
   per_page: 10
   yearly: true
   monthly: true
-
-# Feed
-## https://github.com/hexojs/hexo-generator-feed
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
 
 # Disqus
 disqus_shortname: 66beta

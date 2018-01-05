@@ -1,2 +1,1 @@
-66beta.github.io
-================
+http://blog.66beta.com
