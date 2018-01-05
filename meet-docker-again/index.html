@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nodejs,docker," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Nice to meet U, I am Docker  Docker刚出来那会儿，还是粗暴地一个virtualbox+系统镜像的分发方式，后来有了katematic，再后来有了docker-tools。 一年不见，docker变化真大，最近有项目上nodejs，正好重新认识一下docker。">
+<meta name="keywords" content="nodejs,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重拾 Docker">
+<meta property="og:url" content="http://blog.66beta.com/meet-docker-again/index.html">
+<meta property="og:site_name" content="66beta&#39;s Blog">
+<meta property="og:description" content="Nice to meet U, I am Docker  Docker刚出来那会儿，还是粗暴地一个virtualbox+系统镜像的分发方式，后来有了katematic，再后来有了docker-tools。 一年不见，docker变化真大，最近有项目上nodejs，正好重新认识一下docker。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.66beta.com/public/katematic.png">
+<meta property="og:updated_time" content="2018-01-05T09:43:20.332Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重拾 Docker">
+<meta name="twitter:description" content="Nice to meet U, I am Docker  Docker刚出来那会儿，还是粗暴地一个virtualbox+系统镜像的分发方式，后来有了katematic，再后来有了docker-tools。 一年不见，docker变化真大，最近有项目上nodejs，正好重新认识一下docker。">
+<meta name="twitter:image" content="http://blog.66beta.com/public/katematic.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.66beta.com/meet-docker-again/"/>
+
+
+
+
+
+  <title>重拾 Docker | 66beta's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">66beta's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.66beta.com/meet-docker-again/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="66beta">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="66beta's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重拾 Docker</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T15:26:24+08:00">
+                2018-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Nice to meet U, I am Docker</p>
+</blockquote>
+<p>Docker刚出来那会儿，还是粗暴地一个virtualbox+系统镜像的分发方式，后来有了katematic，再后来有了docker-tools。</p>
+<p>一年不见，docker变化真大，最近有项目上nodejs，正好重新认识一下docker。<br><a id="more"></a></p>
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>当前，docker分商业版和社区版，个人当然是安装社区版：<a href="https://store.docker.com/editions/community/docker-ce-desktop-mac" target="_blank" rel="noopener">docker-ce-desktop-mac</a></p>
+<blockquote>
+<p>不推荐使用Homebrew，安装的只是一个docker-cli 命令行工具</p>
+</blockquote>
+<h3 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h3><p>Docker再国内访问很慢，有些地区是直接墙掉的，所以一定要用镜像加速 <code>Preferences - Daemon - Registry mirrors</code> 下增加DaoCloud的免费镜像地址 <code>http://ebccc999.m.daocloud.io</code>，选DaoCloud是google出来的结果，速度也不错（宣称永久免费），就选了它。阿里云的还要进控制台看，太麻烦了。填写完保存重启<code>Apply &amp; Restart</code>。</p>
+<p>安装完，命令行输入<code>docker info</code> 查看详细信息。</p>
+<h2 id="二、试一试"><a href="#二、试一试" class="headerlink" title="二、试一试"></a>二、试一试</h2><p>起一个nginx的容器试试 <code>docker container run --publish 80:80 nginx</code> ，由于新安装，本地并没有Nginx镜像，所以会从仓库拉一个过来。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ docker container run --publish 80:80 nginx</span><br><span class="line">Unable to find image <span class="string">'nginx:latest'</span> locally</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">e7bb522d92ff: Pull complete</span><br><span class="line">6edc05228666: Pull complete</span><br><span class="line">cd866a17e81f: Pull complete</span><br><span class="line">Digest: sha256:8374bf37a36a58cbbc9a3b8c6f5b838b750a610986d90f5b2437411b38e5e93e</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</span><br></pre></td></tr></table></figure>
+<p>下载完成后就可以看到 <a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> Nginx 启动成功的页面。</p>
+<p>如果是后台运行的话，加上 <code>--detach</code> 参数：<code>docker container run --publish 80:80 --detach nginx</code>，会返回一个容器ID，比如：<em>0077235b8a9d<strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></em></p>
+<h3 id="列出运行中的容器"><a href="#列出运行中的容器" class="headerlink" title="列出运行中的容器"></a>列出运行中的容器</h3><p><code>docker container ls</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                NAMES</span><br><span class="line">0077235b8a9d        nginx               <span class="string">"nginx -g 'daemon ..."</span>   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp   inspiring_saha</span><br></pre></td></tr></table></figure>
+<h3 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><p><code>docker container stop 0077235b8a9d</code></p>
+<h3 id="列出所有容器，包括已经停止的"><a href="#列出所有容器，包括已经停止的" class="headerlink" title="列出所有容器，包括已经停止的"></a>列出所有容器，包括已经停止的</h3><p><code>docker container ls -a</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                NAMES</span><br><span class="line">0077235b8a9d        nginx               <span class="string">"nginx -g 'daemon ..."</span>   4 minutes ago       Up 4 minutes               0.0.0.0:80-&gt;80/tcp   inspiring_saha</span><br><span class="line">c4a05b8e8200        nginx               <span class="string">"nginx -g 'daemon ..."</span>   8 minutes ago       Exited (0) 4 minutes ago                        amazing_noyce</span><br></pre></td></tr></table></figure>
+<p>每个容器的名字 <em>NAMES</em> 是唯一的，可以指定 <code>docker container run --publish 80:80 --detach --name nginx4node nginx</code> ，不指定就随机分配一个。</p>
+<h3 id="重启已停止的容器"><a href="#重启已停止的容器" class="headerlink" title="重启已停止的容器"></a>重启已停止的容器</h3><p><code>docker container start 0077235b8a9d</code></p>
+<h3 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h3><p><code>docker container logs nginx4node</code></p>
+<h3 id="删除一个容器"><a href="#删除一个容器" class="headerlink" title="删除一个容器"></a>删除一个容器</h3><p><code>docker container rm 0077235b8a9d</code></p>
+<h2 id="参数自定义"><a href="#参数自定义" class="headerlink" title="参数自定义"></a>参数自定义</h2><p><code>docker container run --publish 8080:80 --detach nginx:*.* --name nginx4node</code></p>
+<ul>
+<li><code>8080:80</code>，前面是宿主机端口，后面是容器的端口</li>
+<li><code>nginx:*.*</code>，Nginx指定版本号，如果不指定，就是取最新版<code>nginx:latest</code></li>
+</ul>
+<h2 id="老朋友-Katematic"><a href="#老朋友-Katematic" class="headerlink" title="老朋友 Katematic"></a>老朋友 Katematic</h2><p>有时候GUI可以提高生产力，为何一定要在CLI装B呢？通过 Katematic 可以很直观，也很方便的配置镜像。</p>
+<p><img src="/public/katematic.png" alt="katematic"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Ignore-empty-tag-waring-for-Bootstrap-from-sublimelinter-and-htmltidy/" rel="next" title="为Bootstrap忽略sublimelinter htmltidy的空标签提示">
+                <i class="fa fa-chevron-left"></i> 为Bootstrap忽略sublimelinter htmltidy的空标签提示
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">66beta</p>
+              <p class="site-description motion-element" itemprop="description">66 rabbits lying on the ground, even on the cloudy day!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装"><span class="nav-number">1.</span> <span class="nav-text">一、安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像加速"><span class="nav-number">1.1.</span> <span class="nav-text">镜像加速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、试一试"><span class="nav-number">2.</span> <span class="nav-text">二、试一试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列出运行中的容器"><span class="nav-number">2.1.</span> <span class="nav-text">列出运行中的容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止容器"><span class="nav-number">2.2.</span> <span class="nav-text">停止容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出所有容器，包括已经停止的"><span class="nav-number">2.3.</span> <span class="nav-text">列出所有容器，包括已经停止的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启已停止的容器"><span class="nav-number">2.4.</span> <span class="nav-text">重启已停止的容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器日志"><span class="nav-number">2.5.</span> <span class="nav-text">查看容器日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除一个容器"><span class="nav-number">2.6.</span> <span class="nav-text">删除一个容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数自定义"><span class="nav-number">3.</span> <span class="nav-text">参数自定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#老朋友-Katematic"><span class="nav-number">4.</span> <span class="nav-text">老朋友 Katematic</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">66beta</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
