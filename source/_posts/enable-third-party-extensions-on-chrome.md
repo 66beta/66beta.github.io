@@ -2,9 +2,9 @@
 title: Chrome中启用第三方扩展
 date: 2014-06-10 17:52:12
 tags:
-- buzz
+  - chrome
 categories:
-- buzz
+  - 其他
 ---
 Google发布了Chrome扩展的最新政策，不是Chrome商店的扩展一律停用。
 乍一看，出路只有两条了，一是将扩展发布到Chrome应用商店；二是将扩展解压至一个文件夹，然后以“开发者模式”直接导入。

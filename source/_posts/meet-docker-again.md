@@ -7,7 +7,7 @@ tags:
 categories:
   - nodejs
 ---
-> Nice to meet U, I am Docker
+> Nice to meet U, I'm Docker
 
 Docker刚出来那会儿，还是粗暴地一个virtualbox+系统镜像的分发方式，后来有了katematic，再后来有了docker-tools。
 

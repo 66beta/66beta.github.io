@@ -2,9 +2,9 @@
 title: '如何安装配置Hexo'
 date: 2014-05-06 16:29:59
 tags:
-- hexo
+  - hexo
 categories:
-- nodejs
+  - 其他
 ---
 [Hexo](http://hexo.io/) - 是一个基于Nodejs开发的静态blog系统，类似于基于Ruby的Jekyll。由一个台湾同胞[tommy351](http://zespia.tw/)开发的。在[Github](https://github.com/tommy351/hexo)上搜索"node.js blog"的话，当前是Most stars的。
 **Hexo的安装也非常便捷(Git等常用工具就不多说了～)：**

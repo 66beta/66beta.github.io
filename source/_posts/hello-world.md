@@ -2,10 +2,10 @@
 title: Hello World
 date: 2014-05-04 22:11:06
 tags:
-- hexo
-- nodejs
+  - hexo
+  - nodejs
 categories:
-- buzz
+  - 其他
 ---
 ## Octopress不成，Hexo之
 

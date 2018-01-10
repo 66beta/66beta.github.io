@@ -53,7 +53,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: buzz
+default_category: 其他
 category_map:
 tag_map:
 

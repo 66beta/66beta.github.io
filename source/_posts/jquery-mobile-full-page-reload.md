@@ -2,10 +2,10 @@
 title: 'jQuery Mobile页面刷新JS失效问题'
 date: 2014-06-24 16:35:42
 tags:
-- jQuery Mobile
-- js
+  - jQuery Mobile
+  - js
 categories:
-- js
+  - 前端
 ---
 用jQuery Mobile做了几个简单的演示页面，单个页面开发的时候都很顺利，最后汇总在一个测试的时候，发现切换页面的时候，CSS和JS会失效，一开始一直都以为是自己js代码哪里写错了，导致不能执行。<!-- more -->
 

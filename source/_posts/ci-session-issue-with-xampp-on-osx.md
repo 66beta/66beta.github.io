@@ -2,9 +2,9 @@
 title: 'CI Session regenerate Issue with xampp on OSX'
 date: 2014-07-21 13:28:21
 tags:
-- Codeigniter
+  - PHP
 categories:
-- PHP
+  - 后端
 ---
 最近赶一个项目，前后端都包了，还久没写PHP了，再一次扮演全栈码农。由于项目冲突了，时间很急，所以加班到半夜，回去还继续写。由于家里是macbook，平时有用xampp，但是一直都没有涉及到Session，所以都没有碰到此问题。Session的设置参考的官网文档的，存在db中。<!-- more -->
 问题就是每次刷新页面，session就是会新生成一个，所以永远都拿不到之前一步保存的数据。
