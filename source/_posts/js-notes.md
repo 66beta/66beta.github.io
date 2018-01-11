@@ -56,9 +56,15 @@ for (var i = 0; i < btns.length; i++) {
     onClickButton(i)
   }, false)
 }
-```
 
-实际点击每一个button都是显示`5 clicked`。
+/* 结果
+4 clicked
+4 clicked
+4 clicked
+4 clicked
+4 clicked
+*/
+```
 
 想要达到预期效果，改成如下即可：
 
@@ -72,6 +78,14 @@ function onClickButton (who) {
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener('click', onClickButton(i), false) // 返回了函数，所以不需要匿名函数包裹了
 }
+
+/* 结果
+0 clicked
+1 clicked
+2 clicked
+3 clicked
+4 clicked
+*/
 ```
 
 ## ES6 解构
