@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="66beta&#39;s Blog">
 <meta property="og:description" content="起因：sourcetree 提示升级，点了 update，可惜公司网络太挫升级不了。脑抽想到brew好久没更新了，于是brew update，哦哟！确实好多可以升级的。随即开上代理并brew upgrade，一阵升级好痛快！ 升级完毕，愉快得打开vscode并yarn dev，报错了… vscode 终端每次加载都会提示nvm is not compatible with the npm conf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T00:41:56.459Z">
+<meta property="og:updated_time" content="2018-06-13T00:44:21.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="brew upgrade 升级把我的node环境给搞坏了">
 <meta name="twitter:description" content="起因：sourcetree 提示升级，点了 update，可惜公司网络太挫升级不了。脑抽想到brew好久没更新了，于是brew update，哦哟！确实好多可以升级的。随即开上代理并brew upgrade，一阵升级好痛快！ 升级完毕，愉快得打开vscode并yarn dev，报错了… vscode 终端每次加载都会提示nvm is not compatible with the npm conf">
@@ -359,6 +359,7 @@
         <p>起因：sourcetree 提示升级，点了 update，可惜公司网络太挫升级不了。脑抽想到brew好久没更新了，于是<code>brew update</code>，哦哟！确实好多可以升级的。随即开上代理并<code>brew upgrade</code>，一阵升级好痛快！</p>
 <p>升级完毕，愉快得打开vscode并<code>yarn dev</code>，报错了…</p>
 <p>vscode 终端每次加载都会提示<code>nvm is not compatible with the npm config &quot;prefix&quot; option: currently set to &quot;/usr/local&quot;</code></p>
+<a id="more"></a>
 <p><code>nvm ls</code>指向<code>system</code>即最新稳定版10.4.0（brew刚升级的）<code>nvm use 8.11.2</code>，重启vscode，还是指向<code>system</code></p>
 <p>排查，各种google、stackoverflow查，各种改<code>.bash_profile</code>、<code>.zshrc</code>配置，还是没用。</p>
 <p>后来一想，一定是brew导致的！</p>
