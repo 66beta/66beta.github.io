@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -113,6 +113,7 @@
 <meta property="og:url" content="http://blog.66beta.com/use-current_time-instead-of-time-in-wordpress-plugin-development/index.html">
 <meta property="og:site_name" content="66beta&#39;s Blog">
 <meta property="og:description" content="在普通PHP开发中，假定在php.ini中已经设定了timezone为Asia/Shanghai之后，用date(&amp;#39;H:i:s&amp;#39;)即可获得当前时间。但是刚刚在研究开发WordPress插件的时候，发现用date(&amp;#39;H:i:s&amp;#39;)获取的时间是0时区，php.ini中的设置没有起作用，">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-01-10T02:44:20.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发WordPress插件的时候，用date函数无法获取所在时区的时间">
@@ -173,7 +174,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -199,7 +200,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -219,7 +220,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
         
         
@@ -227,7 +228,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
         
         
@@ -235,7 +236,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
 
       
@@ -321,14 +322,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Post created: 2014-07-31 14:59:11" itemprop="dateCreated datePublished" datetime="2014-07-31T14:59:11+08:00">2014-07-31</time>
+              <time title="创建时间：2014-07-31 14:59:11" itemprop="dateCreated datePublished" datetime="2014-07-31T14:59:11+08:00">2014-07-31</time>
             
 
             
@@ -343,9 +344,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Updated at: 2018-01-10 10:44:20" itemprop="dateModified" datetime="2018-01-10T10:44:20+08:00">2018-01-10</time>
+                <time title="修改时间：2018-01-10 10:44:20" itemprop="dateModified" datetime="2018-01-10T10:44:20+08:00">2018-01-10</time>
               
             
           </span>
@@ -359,7 +360,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span>
@@ -492,10 +493,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -516,7 +517,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -537,7 +538,7 @@
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">Kategorien</span>
+                    <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
               
@@ -582,7 +583,7 @@
                       
                     
                     <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
               
@@ -665,7 +666,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.4</div>
 
 
 
@@ -673,7 +674,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
 
 
 
