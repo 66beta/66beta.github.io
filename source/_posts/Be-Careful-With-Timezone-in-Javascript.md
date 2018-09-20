@@ -12,7 +12,6 @@ categories:
 需要获取当前日期，格式为`2018-09-03`，于是想当然地写了：
 ```js
 new Date().toJSON() // "2018-09-03T07:52:51.903Z"
-
 new Date().toJSON().slice(0, 10) // "2018-09-03"
 ```
 
@@ -25,27 +24,23 @@ new Date().toJSON().slice(0, 10) // "2018-09-03"
 如果是早上8点前，问题就出现了。假设你设备上当前是`2018-09-03 06:30:00`，UTC日期其实还在你的昨天`2018-09-02`：
 ```js
 new Date('2018-09-03 06:30:00').toJSON() // "2018-09-02T22:30:00.000Z"
-
 new Date('2018-09-03 06:30:00').toJSON().slice(0, 10) // "2018-09-02"
 ```
 
 更悲催的是，如果没意识到是这个问题，在(09:00 ~ 18:00)工作时间断排查，就要怀疑人生了...
 
-那么如何正确姿势呢？
-> update 2018-09-18 腾讯X5内核真的“与众不同”，华为和步步高系很喜欢用
-
+那么正确姿势呢？
 
 ```js
-// 此处可以用getFullYear这种来获取，比较保险。但字符串操作应该更快一些
+// '01'.slice(-2) => '01'
+// '001'.slice(-2) => '01'
 getTodayDate () {
-  let d = new Date().toLocaleDateString() // '2018/9/3' X5内核: '2018-9-3'
-  d = d.indexOf('/') > 0 ? d.split('/') : d.split('-') // ['2018', '9', '3']
-  d[1] = ('0' + d[1]).slice(-2) // '09'
-  d[2] = ('0' + d[2]).slice(-2) // '03'
-  return d.join('-') // '2018-09-03'
+  let d = new Date()
+  return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2)
 }
 ```
 
-那么如何避免类似问题呢？
 
-只能是提高自己姿势水平，别无他法，有空多看看 [MDN的文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+提高自己姿势水平，有空多看看 [MDN的文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+Monentjs太重，自己维护一个Date工具库可能是个好主意...
